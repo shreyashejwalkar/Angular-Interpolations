@@ -22,10 +22,15 @@ import { Component, OnInit } from '@angular/core';
 
   <!--Event Binding-->
   <button (click)="onClick($event)">Greet</button><br>
-  <button (click)="greeting='Welcome shreya'">Greet</button><br>
-  {{greeting}}
+  <button (click)="greeting='Welcome shreya'">Greet</button>{{greeting}}<br>
 
-<!--Template Refrence Variable -->
+  <!--Template Refrence Variable -->
+  <input #mytext type="text">
+  <button (click)="logMessage(mytext.value)">Log</button><br>
+
+  <!--Two way binding -->
+  <label>Two way binding</label>
+  <input [(ngModel)]="greeting" type="text">{{greeting}}
   `,
   styles: [`
    .text-success{ color : green ;}
@@ -59,5 +64,10 @@ export class TestComponent implements OnInit
   {
      console.log(event);
      this.greeting="Welcome to Angular";
+  }
+
+  logMessage(value)
+  {
+    console.log(value);
   }
 }
